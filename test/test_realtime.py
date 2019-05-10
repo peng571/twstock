@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import twstock
-from twstock import realtime
 
+import importlib.util
+spec = importlib.util.spec_from_file_location("twstock.RealTime", "../twstock/twstock/realtime.py")
+realtime = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(realtime)
 
 class RealtimeTest(unittest.TestCase):
     def test_realtime_field(self):
@@ -69,3 +71,5 @@ class MockRealtimeTest(unittest.TestCase):
         self.assertEqual(s['2330']['info']['code'], '2330')
         self.assertEqual(s['2330']['realtime']['latest_trade_price'], '214.50')
         self.assertTrue(s['2337']['success'])
+
+unittest.main(verbosity=2)

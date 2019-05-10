@@ -1,5 +1,6 @@
 import unittest
-from twstock import mock
+
+from .twstock import mock
 
 
 class MockTest(unittest.TestCase):
@@ -21,3 +22,5 @@ class MockTest(unittest.TestCase):
             mock.get_stock_info('2330', 1), mock.get_stock_info('2330', 2))
         self.assertNotEqual(
             mock.get_stock_info('2330', 0), mock.get_stock_info('2330', 2))
+
+unittest.main(verbosity=2)

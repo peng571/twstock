@@ -13,3 +13,5 @@ class CLIFunctionTest(unittest.TestCase):
 
     def test_stock(self):
         cli.stock.run(self.stocks)
+
+unittest.main(verbosity=2)

@@ -10,19 +10,20 @@ class LegacyAnalytics(object):
             :rtype: int
             :returns: 向量數值：正數向上、負數向下。
         """
-        diff_data = []
-        for i in range(1, len(list_data)):
-            if list_data[-i] > list_data[-i - 1]:
-                diff_data.append(1)
-            else:
-                diff_data.append(-1)
-        cont = 0
-        for value in diff_data:
-            if value == diff_data[0]:
-                cont += 1
-            else:
-                break
-        return cont * diff_data[0]
+        # diff_data = []
+        # for i in range(1, len(list_data)):
+        #     if list_data[-i] > list_data[-i - 1]:
+        #         diff_data.append(1)
+        #     else:
+        #         diff_data.append(-1)
+        # cont = 0
+        # for value in diff_data:
+        #     if value == diff_data[0]:
+        #         cont += 1
+        #     else:
+        #         break
+        # return cont * diff_data[0]
+        return []
 
     def moving_average(self, data, days):
         """ 計算移動平均數

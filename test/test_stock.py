@@ -1,7 +1,10 @@
 import datetime
 import unittest
-from twstock import stock
 
+import importlib.util
+spec = importlib.util.spec_from_file_location("twstock.Stock", "../twstock/twstock/stock.py")
+stock = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(stock)
 
 class FetcherTest(object):
     def test_convert_date(self):
@@ -197,3 +200,5 @@ class TPEXStockTest(unittest.TestCase, StockTest):
                           3424000, 1078000, 1433000, 891000, 1202000, 1008000,
                           999000, 488000, 706000, 231000, 1890000, 782000,
                           1214000, 583000])
+
+unittest.main(verbosity=2)

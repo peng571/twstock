@@ -4,9 +4,12 @@ import datetime
 import json
 import time
 import requests
-import twstock
 import sys
 
+import importlib.util
+spec = importlib.util.spec_from_file_location("codes.codes", "../twstock/twstock/codes/codes.py")
+Codes = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(Codes)
 
 SESSION_URL = 'http://mis.twse.com.tw/stock/index.jsp'
 STOCKINFO_URL = 'http://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch={stock_id}&_={time}'

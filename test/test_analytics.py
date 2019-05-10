@@ -1,4 +1,6 @@
 import unittest
+
+
 from twstock import stock
 from twstock import analytics
 from twstock import legacy
@@ -143,3 +145,4 @@ class BestFourPointTest(unittest.TestCase):
         self.assertEqual(self.ng.best_four_point(),
                          self.legacy.best_four_point())
 
+unittest.main(verbosity=2)
