@@ -12,8 +12,6 @@ import requests
 
 import importlib.util
 spec = importlib.util.spec_from_file_location("twstock", "../twstock/twstock")
-# Codes = importlib.util.module_from_spec(spec)
-# spec.loader.exec_module(Codes)
 
 TWSE_BASE_URL = 'http://www.twse.com.tw/'
 TPEX_BASE_URL = 'http://www.tpex.org.tw/'
@@ -45,6 +43,7 @@ class TWSEFetcher(BaseFetcher):
         params = {'date': '%d%02d01' % (year, month), 'stockNo': sid}
         for retry_i in range(retry):
             r = requests.get(self.REPORT_URL, params=params)
+            time.sleep(2)
             try:
                 data = r.json()
             except JSONDecodeError:
@@ -54,11 +53,6 @@ class TWSEFetcher(BaseFetcher):
         else:
             # Fail in all retries
             data = {'stat': '', 'data': []}
-
-        if data['stat'] == 'OK':
-            data['data'] = self.purify(data)
-        else:
-            data['data'] = []
         return data
 
     def _make_datatuple(self, data):
