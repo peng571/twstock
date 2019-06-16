@@ -43,7 +43,7 @@ class TWSEFetcher(BaseFetcher):
         params = {'date': '%d%02d01' % (year, month), 'stockNo': sid}
         for retry_i in range(retry):
             r = requests.get(self.REPORT_URL, params=params)
-            time.sleep(2)
+            time.sleep(3)
             try:
                 data = r.json()
             except JSONDecodeError:
