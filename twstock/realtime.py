@@ -63,9 +63,9 @@ def _format_stock_info(data) -> dict:
 def _join_stock_id(stocks) -> str:
     if isinstance(stocks, list):
         return '|'.join(['{}_{}.tw'.format(
-            'tse' if s in twstock.twse else 'otc', s) for s in stocks])
+            'tse' if s in Codes.twse else 'otc', s) for s in stocks])
     return '{}_{stock_id}.tw'.format(
-        'tse' if stocks in twstock.twse else 'otc', stock_id=stocks)
+        'tse' if stocks in Codes.twse else 'otc', stock_id=stocks)
 
 
 def get_raw(stocks) -> dict:
