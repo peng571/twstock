@@ -7,7 +7,7 @@ import requests
 import sys
 
 import importlib.util
-spec = importlib.util.spec_from_file_location("codes.codes", "../twstock/twstock/codes/codes.py")
+spec = importlib.util.spec_from_file_location("codes.codes", "./twstock/twstock/codes/codes.py")
 Codes = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(Codes)
 
